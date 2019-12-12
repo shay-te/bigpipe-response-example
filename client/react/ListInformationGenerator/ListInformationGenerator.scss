@@ -1,0 +1,11 @@
+@import '../../scss/params';
+
+.list-info-generator {
+    & > div {
+        padding: $spacing-XS;
+    }
+}
+
+.list-info-generator > div {
+    margin-bottom: $spacing-S;
+}

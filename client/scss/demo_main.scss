@@ -1,0 +1,33 @@
+@import 'params';
+@import 'general';
+@import 'demo_pagelet_timer';
+
+.main-content {
+    width: $content-width;
+    min-height: 100%;
+    margin: 0 auto;
+    display: block;
+    overflow-x: hidden;
+    padding: $spacing-S 0;
+
+    .main-content-left {
+        overflow-y: hidden;
+        width: $content-column-left-width;
+        min-width: $content-column-left-width;
+        max-width: $content-column-left-width;
+        padding-right: $spacing-S;
+    }
+
+    .main-content-center {
+        width: $content-width - $content-column-left-width - $content-column-right-width;
+    }
+
+    .main-content-right {
+        overflow-y: hidden;
+        width: $content-column-right-width;
+        min-width: $content-column-right-width;
+        max-width: $content-column-right-width;
+        padding-left: $spacing-S;
+    }
+}
+

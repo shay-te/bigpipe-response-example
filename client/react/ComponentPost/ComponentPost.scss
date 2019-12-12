@@ -1,0 +1,15 @@
+@import '../../scss/params';
+
+.component-post {
+
+    .comp-post-title {
+        font-weight: bold;
+        height: 43px;
+        padding: $spacing-S;
+    }
+
+    .comp-post-content {
+        padding: $spacing-S;
+    }
+
+}

@@ -1,0 +1,15 @@
+.pagelet-relative {
+    position: relative;
+
+    .pagelet-timer {
+        position: absolute;
+        z-index: 1000;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        padding-top: 20px;
+        text-align: center;
+        font-size: 80px;
+    }
+}

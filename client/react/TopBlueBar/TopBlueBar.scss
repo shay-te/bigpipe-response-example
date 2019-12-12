@@ -1,0 +1,33 @@
+@import '../../scss/params';
+
+.top-blue-bar {
+    padding: 6px 0px;
+    background-color: #4267b2;
+    border-bottom: 1px solid #29487d;
+    color: white;
+
+    .top-blue-bar-content {
+        width: $content-width;
+        margin: 0 auto;
+        overflow-x: hidden;
+
+        & > div:last-child {
+            text-align: right;
+        }
+
+        & > div {
+            padding-right: $spacing-XS;
+        }
+
+        .top-blue-bar-icons {
+            display: inline-block;
+            color: $color-grey-5;
+
+            & > div {
+                display: inline-block;
+                width: 30px;
+                text-align: center;
+            }
+        }
+    }
+}

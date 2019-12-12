@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
+# IDEA
+
+.idea/
+
+# GENERATED FILES
+
+public/bigpipe.js
+public/component_cache

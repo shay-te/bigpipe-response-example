@@ -1,0 +1,16 @@
+@import '../../scss/params';
+
+.navigation-menu-item {
+    height: 28px;
+    line-height: 28px;
+
+    .nav-menu-item-icon {
+        color: $color-blue;
+        text-align: center;
+        width: 20px;
+    }
+
+    .nav-menu-item-text {
+        padding-left: $spacing-S;
+    }
+}
