@@ -4,6 +4,7 @@ var InformationBox = createReactClass({
 			title: ''
 		};
 	},
+
 	render: function () {
 		return (
 		    <div className='information-box white-box shadow'>

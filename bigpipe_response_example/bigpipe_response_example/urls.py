@@ -13,16 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import logging
+import sys
+
 from django.contrib import admin
 from django.urls import path
 from django.views.i18n import JavaScriptCatalog
 
 from bigpipe_response.bigpipe import Bigpipe
+from data.app_instance import AppInstance
+from omegaconf import OmegaConf
+
+# logging
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+root.addHandler(handler)
+
+# Setup bigpipe and application before importing the views
+Bigpipe.init('../config/config_bigpipe.py')
+AppInstance.init(OmegaConf.load('../config/config_demo.yaml'))
+
 from .views import view_demo
 
-
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
     path('', view_demo.demo, name='demo'),
     path('demo', view_demo.demo, name='demo main'),

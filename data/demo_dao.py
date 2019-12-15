@@ -51,7 +51,19 @@ class DemoDAO(object):
         return self.conf
 
     def get_news_feed(self):
-        return {'feed': [{
+        locale_post = [
+            {
+                'title': gettext('post_title_1'),
+                'content': random_words(15),
+                'image': images[random.randint(0, len(images) - 1)] if bool(random.getrandbits(1)) else None
+            },
+            {
+                'title': 'post_title_2',
+                'content': random_words(15),
+                'image': images[random.randint(0, len(images) - 1)] if bool(random.getrandbits(1)) else None
+            }
+        ]
+        return {'feed': locale_post + [{
                 'title': 'I am post title {}'.format(i),
                 'content': random_words(15),
                 'image': images[random.randint(0, len(images)-1)] if bool(random.getrandbits(1)) else None

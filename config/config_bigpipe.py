@@ -10,4 +10,4 @@ JS_SOURCE_PATH = [source_base_path]
 CSS_SOURCE_PATH = [source_base_path]
 RENDERED_OUTPUT_PATH = rendered_output_path
 STATIC_URI = settings.STATIC_URL
-IS_PRODUCTION_MODE = not settings.DEBUG
+IS_PRODUCTION_MODE = False

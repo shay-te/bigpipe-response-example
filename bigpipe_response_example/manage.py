@@ -4,10 +4,7 @@ import os
 import signal
 import sys
 
-from omegaconf import OmegaConf
-
 from bigpipe_response.bigpipe import Bigpipe
-from data.app_instance import AppInstance
 
 
 def main():
@@ -21,8 +18,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
 
-    Bigpipe.init('../config/config_bigpipe.py')
-    AppInstance.init(OmegaConf.load('../config/config_demo.yaml'))
     execute_from_command_line(sys.argv)
 
 

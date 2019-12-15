@@ -15,7 +15,7 @@ var ComponentPost = createReactClass({
 	    }
 		return (
 		    <div className='component-post white-box shadow'>
-		        <div className='comp-post-title ellipsis'>{this.props.title}</div>
+		        <div className='comp-post-title ellipsis'>{gettext(this.props.title)}</div>
 		        <div className='comp-post-content'>
 		            <div>{this.props.content}</div>
 		        </div>

@@ -1,6 +1,8 @@
 import random
 from time import sleep
 
+from django.utils.translation import activate
+
 from bigpipe_response.bigpipe_response import BigpipeResponse
 from bigpipe_response.pagelet import Pagelet
 from data.app_instance import AppInstance
@@ -41,10 +43,12 @@ def top_blue_bar(request):
 
 def news_feed(request, param_1, sleep_time):
     sleep(sleep_time)
+    activate('he')  # Set language to hebrew, second post is client side translated
     return BigpipeResponse(request,
                            render_type=BigpipeResponse.RenderType.JAVASCRIPT,
                            render_source='NewsFeed',
-                           render_context=demo_dao.get_news_feed())
+                           render_context=demo_dao.get_news_feed(),
+                           i18n_dependencies=['post_title_.*'])
 
 
 def navigation_menu(request, sleep_time):
