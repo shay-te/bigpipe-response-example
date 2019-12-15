@@ -4,6 +4,8 @@ import os
 import signal
 import sys
 
+from omegaconf import OmegaConf
+
 from bigpipe_response.bigpipe import Bigpipe
 
 
@@ -30,4 +32,7 @@ def handle_kill(signum, frame):
 if __name__ == '__main__':
     signal.signal(signal.SIGTERM , handle_kill)
     signal.signal(signal.SIGINT, handle_kill)
+
+    OmegaConf.register_resolver('pull_path', lambda sub_path: os.path.join(os.path.dirname(os.getcwd()), sub_path))
+
     main()

@@ -33,15 +33,18 @@ root.setLevel(logging.DEBUG)
 root.addHandler(handler)
 
 # Setup bigpipe and application before importing the views
-Bigpipe.init('../config/config_bigpipe.py')
+Bigpipe.init(OmegaConf.load('../config/config_bigpipe.yaml'))
 AppInstance.init(OmegaConf.load('../config/config_demo.yaml'))
 
 from .views import view_demo
+from .views import view_landing
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', view_demo.demo, name='demo'),
+    path('landing', view_landing.demo, name='landing'),
+
+    path('', view_demo.demo, name='demo main'),
     path('demo', view_demo.demo, name='demo main'),
     path('demo/news_feed', view_demo.news_feed, name='news_feed'),
     path('demo/navigation_menu', view_demo.navigation_menu, name='demo_pagelet_navigation'),

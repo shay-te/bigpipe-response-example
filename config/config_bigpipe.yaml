@@ -1,0 +1,7 @@
+js_source_path:
+  - ${pull_path:client}
+css_source_path:
+  - ${pull_path:client}
+rendered_output_path: ${pull_path:public}
+static_uri: 'public'
+is_production_mode: false
