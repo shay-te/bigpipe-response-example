@@ -1,0 +1,7 @@
+bigpipe:
+  client_base_path :
+    - ${_hydra:runtime.cwd}/../client
+
+  rendered_output_path: ${_hydra:runtime.cwd}/../public
+  static_uri : ${django:STATIC_URL}
+  is_production_mode : ${django:not DEBUG}
