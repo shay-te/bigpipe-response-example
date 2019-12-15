@@ -18,6 +18,8 @@ __pycache__/
 
 
 .hydra
+bigpipe_response_example/outputs
+
 # TESTS
 
 
