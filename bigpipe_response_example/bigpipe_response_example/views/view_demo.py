@@ -3,19 +3,16 @@ from time import sleep
 
 from bigpipe_response.bigpipe_response import BigpipeResponse
 from bigpipe_response.pagelet import Pagelet
+from data.app_instance import AppInstance
 
-from data.demo_dao import DemoDAO
-
-demo_dao = DemoDAO()
-
+demo_dao = AppInstance.get()
 
 def demo(request):
-    wait_from, wait_to = 1,12
     context = {
         'data': {
-            'pagelet_news_feed_time': random.randrange(wait_from, wait_to),
-            'pagelet_navigation_menu_time': random.randrange(wait_from, wait_to),
-            'pagelet_information_boxes_time': random.randrange(wait_from, wait_to)
+            'pagelet_news_feed_time': random.randrange(demo_dao.config.view_wait_from, demo_dao.config.view_wait_to),
+            'pagelet_navigation_menu_time': random.randrange(demo_dao.config.view_wait_from, demo_dao.config.view_wait_to),
+            'pagelet_information_boxes_time': random.randrange(demo_dao.config.view_wait_from, demo_dao.config.view_wait_to)
         }
     }
 

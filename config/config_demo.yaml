@@ -1,0 +1,4 @@
+view_wait_from: 1
+view_wait_to: 10
+title_minimum_word_count: 3
+content_minimum_word_count: 15

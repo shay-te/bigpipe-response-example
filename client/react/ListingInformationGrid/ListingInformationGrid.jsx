@@ -3,7 +3,7 @@ var ListingInformationGrid = createReactClass({
         return {width: 10};
     },
 
-    componentDidMount() {
+    componentDidMount: function() {
         this.setState({ width: this.refs.listInfoGrid.clientWidth });
     },
 

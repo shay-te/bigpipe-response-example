@@ -17,31 +17,38 @@ images_prefix = 'public/images'
 images = ['{}/{}'.format(images_prefix, f) for f in os.listdir(images_dir)]
 
 
-def random_words(min_words_count, max_wprd_cout: int = None):
-    if not max_wprd_cout:
-        max_wprd_cout =  len(words) - 1
+def random_words(min_words_count, max_word_count: int = None):
+    if not max_word_count:
+        max_word_count = len(words) - 1
     words_copy = words.split(" ")
     random.shuffle(words_copy)
-    return ' '.join(words_copy[0:random.randrange(min_words_count, max_wprd_cout)])
+    return ' '.join(words_copy[0:random.randrange(min_words_count, max_word_count)])
 
 
 custom_info_components = ['ListingInformationGrid', 'ComponentPost']
 
 
-def get_component_context(component_name):
+def get_component_context(component_name, title_minimum_words, content_minimum_words):
     if component_name == 'ListingInformationGrid':
         images_copy = images.copy()
         random.shuffle(images_copy)
-        return {'title': random_words(3), 'size' : 2, 'images': images_copy[0:4]};
+        return {'title': random_words(3), 'size': 2, 'images': images_copy[0:4]};
     if component_name == 'ComponentPost':
         return {
-            'title': random_words(3),
-            'content': random_words(15)
+            'title': random_words(title_minimum_words),
+            'content': random_words(content_minimum_words)
         }
     return {}
 
 
 class DemoDAO(object):
+
+    def __init__(self, config):
+        self.conf = config
+
+    @property
+    def config(self):
+        return self.conf
 
     def get_news_feed(self):
         return {'feed': [{
@@ -78,5 +85,5 @@ class DemoDAO(object):
         custom_info = []
         for i in range(3, random.randint(6, 10)):
             component = custom_info_components[random.randrange(0, len(custom_info_components))]
-            custom_info.append({'component': component, 'context': get_component_context(component)})
+            custom_info.append({'component': component, 'context': get_component_context(component, self.conf.title_minimum_word_count, self.conf.content_minimum_word_count)})
         return {'renderComponents': custom_info}

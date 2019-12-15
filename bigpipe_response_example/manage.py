@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
+import signal
 import sys
+
+from omegaconf import OmegaConf
+
+from bigpipe_response.bigpipe import Bigpipe
+from data.app_instance import AppInstance
 
 
 def main():
@@ -14,8 +20,19 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    Bigpipe.init('../config/config_bigpipe.py')
+    AppInstance.init(OmegaConf.load('../config/config_demo.yaml'))
     execute_from_command_line(sys.argv)
 
 
+def handle_kill(signum, frame):
+    print('Signal terminate received will shutdown bigpipe')
+    Bigpipe.get().shutdown()
+    sys.exit(0)
+
+
 if __name__ == '__main__':
+    signal.signal(signal.SIGTERM , handle_kill)
+    signal.signal(signal.SIGINT, handle_kill)
     main()

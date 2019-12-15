@@ -21,8 +21,6 @@ from bigpipe_response.bigpipe import Bigpipe
 from .views import view_demo
 
 
-Bigpipe.init('../config/config_bigpipe.py')
-
 urlpatterns = [
     # path('admin/', admin.site.urls),
 
