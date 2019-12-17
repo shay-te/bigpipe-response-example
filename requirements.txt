@@ -1,2 +1,6 @@
 django==3.0
+bigpipe-response==0.0.1
+hydra==2.5
+
+
 
