@@ -16,6 +16,7 @@ __pycache__/
 /public/bigpipe.js
 
 
+**/node_modules
 
 .hydra
 bigpipe_response_example/outputs
