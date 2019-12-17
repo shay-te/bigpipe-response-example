@@ -1,8 +1,12 @@
 bigpipe:
-  js_source_path:
-    - ${full_path:client}
-  css_source_path:
-    - ${full_path:client}
   rendered_output_path: ${full_path:public}
   static_uri: 'public'
   is_production_mode: false
+
+  processors:
+    js:
+      source_path:
+        - ${full_path:client}
+    css:
+      source_path:
+        - ${full_path:client}
