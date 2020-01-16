@@ -1,0 +1,18 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+	    <base href="/" target="_blank">
+        {% for css_link in css_links %}
+            <link rel="stylesheet" media="screen" href="{{css_link}}">
+        {% endfor %}
+
+        <link href="public/fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
+        <script type="text/javascript" src="public/bigpipe.js"></script>
+        <script type="text/javascript" src="jsi18n"></script>
+        {% for js_link in js_links %}
+        <script type="text/javascript" src="{{js_link}}"></script>
+        {% endfor %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}

@@ -1,6 +1,8 @@
 import random
 from time import sleep
 
+from bigpipe_response.bigpipe import Bigpipe
+from bigpipe_response.helpers import to_include
 from django.utils.translation import activate
 
 from bigpipe_response.bigpipe_response import BigpipeResponse
@@ -9,7 +11,10 @@ from data.app_instance import AppInstance
 
 demo_dao = AppInstance.get()
 
-def demo(request):
+js_react_dependencies = to_include(['React=react', 'ReactDOM=react-dom', 'createReactClass=create-react-class'], is_link=True, processor_name=Bigpipe.get().config.processors.js_modules.params.processor_name)
+
+
+def demo_piping(request):
     context = {
         'data': {
             'pagelet_news_feed_time': random.randrange(demo_dao.config.view_wait_from, demo_dao.config.view_wait_to),
@@ -27,10 +32,10 @@ def demo(request):
     ]
     return BigpipeResponse(request,
                            render_type=BigpipeResponse.RenderType.TEMPLATE,
-                           render_source='demo.html',
+                           render_source='demoPipingReact.html',
                            render_context=context,
                            pagelets=pagelets,
-                           js_dependencies=['demo_pagelet_timer'],
+                           js_dependencies=['demo_pagelet_timer'] + js_react_dependencies,
                            scss_dependencies=['@demo_main'])
 
 

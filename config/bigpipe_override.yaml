@@ -2,11 +2,34 @@ bigpipe:
   rendered_output_path: ${full_path:public}
   static_uri: 'public'
   is_production_mode: false
+  java_script_install_folder: D:\\test_output_dir
+
+  remote:
+    port_start: 7480
+    port_count: 10
+    extra_node_packages:
+      - vue
+      - vue-template-compiler
+      - rollup-plugin-vue
 
   processors:
-    js:
-      source_path:
-        - ${full_path:client}
+
+    markdown:
+      class: bigpipe_processors.markdown_processor.MarkdownProcessor
+      params:
+        processor_name: markdown
+        code_base_directories:
+          - ${full_path:client\markdowns}
+        source_ext:
+          - md
+        target_ext: html
+
+    jsx:
+      params:
+        code_base_directories:
+          - ${full_path:client\js}
+          - ${full_path:client\react}
     css:
-      source_path:
-        - ${full_path:client}
+        params:
+          code_base_directories:
+            - ${full_path:client}

@@ -1,0 +1,15 @@
+bigpipe:
+  rendered_output_path: ${full_path:public}
+  static_uri: 'public'
+  is_production_mode: false
+
+  processors:
+    jsx:
+      params:
+        code_base_directories:
+          - ${full_path:client\js}
+          - ${full_path:client\react}
+    css:
+        params:
+          code_base_directories:
+            - ${full_path:client}
