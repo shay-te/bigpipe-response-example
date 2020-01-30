@@ -1,6 +1,5 @@
 var BaseProcessor = require('BaseProcessor');
 var build = require('RollupBaseBuild');
-var jsx = require('rollup-plugin-jsx');
 
 var VuePlugin = require('rollup-plugin-vue');
 var plugins = [ VuePlugin() ];

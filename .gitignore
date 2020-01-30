@@ -15,7 +15,8 @@ __pycache__/
 /public/component_cache
 /public/bigpipe.js
 
-
+**/*.log
+**/db.sqlite3
 **/node_modules
 
 .hydra

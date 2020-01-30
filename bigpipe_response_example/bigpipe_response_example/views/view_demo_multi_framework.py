@@ -1,15 +1,11 @@
-import random
-from time import sleep
-
 from bigpipe_response.bigpipe import Bigpipe
 from bigpipe_response.bigpipe_render_options import BigpipeRenderOptions
 from bigpipe_response.helpers import to_include
-from django.utils.translation import activate
 
 from bigpipe_response.bigpipe_response import BigpipeResponse
 from bigpipe_response.pagelet import Pagelet
 
-from bigpipe_processors.VueDOMBind import VueDOMBind
+from bigpipe_response_example.bigpipe_processors.VueDOMBind import VueDOMBind
 from data.app_instance import AppInstance
 
 demo_dao = AppInstance.get()

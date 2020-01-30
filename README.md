@@ -4,8 +4,9 @@ Example project for the [Bigpipe Response](https://github.com/shacoshe/bigpipe-r
 
 
 ### Start the project
-1. Start django by running `python manage.py`
-2. Open browser on address `http://localhost:8080`
+1. Install dependencies `pip3 install -r requirements.txt`
+2. Start django by running `PYTHONPATH=. python3 bigpipe_response_example/manage.py`
+3. Open browser on address `http://localhost:8080`
  
 
 ### project structure:
@@ -33,3 +34,11 @@ This example is using [Hydra](https://hydra.cc/) to configure bigpipe, demo data
 Open the file `bigpipe_response_example/bigpipe_response_example/views/view_demo.py`
 
 
+
+### 
+Building with docker 
+
+```bash
+docker build -t bigpipe_respose_example .
+docker run -p 8080:8080 bigpipe_respose_example
+```

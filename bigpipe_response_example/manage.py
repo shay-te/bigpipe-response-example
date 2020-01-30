@@ -4,10 +4,10 @@ import os
 import signal
 import sys
 import hydra
-from bigpipe_response.processors.remote_js_file_processor import RemoteJsFileProcessor
-from omegaconf import OmegaConf
+from init_bigpipe import init_bigpie
 
-project_path = os.path.dirname(os.path.dirname(os.getcwd()))
+project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 @hydra.main(config_path="../config/app_config.yaml")
 def main(cfg):
@@ -22,10 +22,8 @@ def main(cfg):
         ) from exc
 
     if os.environ.get('RUN_MAIN') == 'true':
-        OmegaConf.register_resolver('full_path', lambda sub_path: os.path.join(project_path, sub_path))
-        from bigpipe_response.bigpipe import Bigpipe
         from data.app_instance import AppInstance
-        Bigpipe.init(cfg.bigpipe, create_processors())  # Setup bigpipe
+        init_bigpie(cfg.bigpipe)
         AppInstance.init(cfg.demo)  # Setup app instance
 
     execute_from_command_line(setup_django_params(cfg))
@@ -43,16 +41,6 @@ def handle_kill(signum, frame):
     from bigpipe_response.bigpipe import Bigpipe
     Bigpipe.get().shutdown()
     sys.exit(0)
-
-
-def create_processors():
-    vue_processor = RemoteJsFileProcessor('vue',
-                                          'bigpipe_processors.VueProcessor.js',
-                                          [os.path.join(project_path, 'client', 'vue')],
-                                          source_ext=['js', 'vue'],
-                                          target_ext='js')
-
-    return [vue_processor]
 
 
 if __name__ == '__main__':

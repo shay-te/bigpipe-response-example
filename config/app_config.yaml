@@ -6,7 +6,7 @@ django:
   port: 8080
   params:
     - runserver
-    - ${django.port}
+    - 0.0.0.0:${django.port}
 
 demo:
   view_wait_from: 1
@@ -16,4 +16,4 @@ demo:
 
 hydra:
   run:
-    dir: outputs
+    dir: .

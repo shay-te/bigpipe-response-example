@@ -2,7 +2,6 @@ bigpipe:
   rendered_output_path: ${full_path:public}
   static_uri: 'public'
   is_production_mode: false
-  java_script_install_folder: D:\\test_output_dir
 
   remote:
     port_start: 7480
@@ -15,7 +14,7 @@ bigpipe:
   processors:
 
     markdown:
-      class: bigpipe_processors.markdown_processor.MarkdownProcessor
+      class: bigpipe_response_example.bigpipe_processors.markdown_processor.MarkdownProcessor
       params:
         processor_name: markdown
         source_paths:
